@@ -1,0 +1,7 @@
+DB:
+  host: "host name"
+  user: "host user"
+  password: "host password"
+Discord:
+  Token: "Discord Bot Token"
+  Arcade-Channel: "Channel ID which Bot listenes to"
