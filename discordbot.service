@@ -1,0 +1,16 @@
+[Unit]
+Description=DiscordBotRPS
+After=syslog.target
+After=network.target
+
+
+[Service]
+# Command to execute when the service is started
+ExecStart=/usr/bin/python3  /home/pi/Documents/DiscordBotRPS/bot.py
+WorkingDirectory= /home/pi/Documents/DiscordBotRPS
+User=pi
+Type=simple
+Restart=never
+
+[Install]
+WantedBy=default.target
