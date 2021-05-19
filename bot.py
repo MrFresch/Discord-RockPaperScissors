@@ -137,14 +137,31 @@ class MyClient(discord.Client):
             if message.author in activeGames:
                 print("lol")
                 if message.content in options:
-                    i = compareStrings(random.choice(options), message.content)
+                    compPick = random.choice(options)
+                    i = compareStrings(compPick, message.content)
                     print(i)
                     if i == 0:
                         await message.channel.send("It's a tie!")
+                        await message.channel.send("I had picked " + message.content + "!")
                     if i == -1:
                         await message.channel.send("You loose! Don't you go sad on me now.")
+                        if message.content == 'rock':
+                            await message.channel.send("I had picked paper! Paper incapsulates the rock.")
+                        if message.content == 'paper':
+                            await message.channel.send("I had picked scissors! Scissors cut the paper.")
+                        if message.content == 'scissors':
+                            await message.channel.send("I had picked rock! Rock smashes the scissors.")
                     if i == 1:
                         await message.channel.send("You won! WOOOHOOOOO! what are you doing with your life playing this.")
+                        if message.content == 'rock':
+                            await message.channel.send("I had picked scissors! Rock smashes the scissors, good job!")
+                            await message.channel.send("Your highscore is going up... Check it out by using /highscore.")
+                        if message.content == 'paper':
+                            await message.channel.send("I had picked rock! Paper incapsulates the rock, good job!")
+                            await message.channel.send("Your highscore is going up... Check it out by using /highscore.")
+                        if message.content == 'scissors':
+                            await message.channel.send("I had picked paper! Scissors cut the paper, good job!")
+                            await message.channel.send("Your highscore is going up... Check it out by using /highscore.")
                     await message.channel.send("Thank you for playing!")
                     activeGames.remove(message.author)
                     insertHighScore(message.author, i)
